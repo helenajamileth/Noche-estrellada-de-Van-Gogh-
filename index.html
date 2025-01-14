@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi sanvalentin</title>
+  <link rel="stylesheet" href="v1.css">
+  <style>
+    body {
+      background-image: url('Noche estrellada.png');
+      background-size: cover; /* Ajusta la imagen para que cubra todo el fondo */
+      background-position: center; /* Centra la imagen */
+      background-repeat: no-repeat; /* Evita que la imagen se repita */
+    }
+    .wrapper {
+      position: relative;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-weight: bold; /* Aplica negritas */
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Aplica sombra */
+      background-color: goldenrod; /* Fondo amarillo */
+      color: midnightblue; /* Color de texto azul */
+      padding: 10px; /* Espaciado interno */
+      border: 2px solid; /* Borde negro de 2px */
+      border-radius: 5px; /* Bordes redondeados */
+    }
+    .envelope {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      background-color: rgba(25, 25, 112, 0.7); /* Azul oscuro con opacidad */
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: transform 1s;
+      border: 3px solid goldenrod;
+      padding: 10px;
+    }
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 80px 40px;
+      border-color: transparent transparent #0000Transparent;
+      transform-origin: top left;
+      transform: translate(-50%, -80%) rotate(-45deg);
+      transition: transform 1s;
+    }
+    .letter {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      display: none;
+      background-color: transparent; /* Fondo completamente transparente */
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.5); /* Borde blanco semitransparente */
+    }
+    textarea {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      resize: none;
+      background-color: transparent; /* Fondo del área de texto transparente */
+      color: white; /* Texto visible en blanco */
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: goldenrod;
+      color: midnightblue;
+      border: 3px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .open .flap {
+      transform: translate(-50%, -80%) rotate(0deg);
+    }
+    .open .envelope {
+      transform: rotateX(180deg);
+    }
+    .seal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+    }
+    .water-drop {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      background-color: goldenrod;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      animation: drop 1s forwards;
+    }
+    @keyframes drop {
+      0% {
+        top: -50px;
+        opacity: 1;
+      }
+      80% {
+        top: 150px;
+        opacity: 1;
+      }
+      100% {
+        top: 180px;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header> 
+    <h1>Feliz sanvalentin ❤️‍🩹🌙</h1>
+  </header>
+  <div class="wrapper">
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+      <div class="letter">
+        <textarea id="message" placeholder="Mis detalles amorosos...">
+Tu eres mi noche estrellada ❤‍🩹🌙✨
+
+tu eres mi noche estrellada,
+un lienzo de luz y calma,
+donde las estrellas bailan
+al compás de tu alma.
+
+tus ojos, constelaciones,
+guían mi navegar,
+como el cielo de van gogh,
+tan profundo y sin final.
+
+en tus curvas de pinceladas,
+encuentro mi refugio eterno,
+un remolino de emociones
+que quita el frío invierno.
+
+eres la luna que abraza,
+los astros que iluminan mi ser,
+un arte que no se explica,
+pero que no dejo de ver.
+
+déjame pintar contigo
+un universo sin final,
+donde tú seas mi estrella
+y yo tu cielo inmortal. ❤‍🩹🌙✨            
+        </textarea>
+      </div>
+    </div>
+    <button onclick="openEnvelope()">Boton</button>
+  </div>
+  <script>
+    const waterDrop = document.createElement('div');
+    waterDrop.className = 'water-drop';
+    document.body.appendChild(waterDrop);
+    
+    waterDrop.addEventListener('animationend', () => {
+      document.getElementById('envelope').classList.add('open');
+      setTimeout(() => {
+        document.querySelector('.letter').style.display = 'block';
+      }, 1000);
+      waterDrop.remove();
+    });
+
+    function openEnvelope() {
+      document.getElementById('envelope').classList.add('open');
+      setTimeout(() => {
+        document.querySelector('.letter').style.display = 'block';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
